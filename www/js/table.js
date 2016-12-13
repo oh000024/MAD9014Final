@@ -1,4 +1,5 @@
 "use strict";
+const ICONPATH ="img\\"
 let pages = []; // used to store all our screens/pages
 let links = []; // used to store all our navigation links
 function navigate(ev) {
@@ -19,6 +20,8 @@ function navigate(ev) {
         }
     }
 }
+
+
 
 function StandingsData(game) {
     if (game.away_score > game.home_score) {
@@ -59,13 +62,13 @@ function displayGameData(data) {
             //Sample Tables stuff here:
             let tr = document.createElement("tr");
             let tdh = document.createElement("td");
-            tdh.textContent = gTeamInfo[game.home].teamname;
+            tdh.innerHTML ="<img src=img/"+gTeamInfo[game.home].teamiconID+">" +gTeamInfo[game.home].teamname;
             // Score
             let tds = document.createElement("td");
             tds.textContent = game.home_score + " - " + game.away_score;
             // Away team
             let tda = document.createElement("td");
-            tda.textContent = gTeamInfo[game.away].teamname;
+            tda.innerHTML ="<img src=img/"+gTeamInfo[game.away].teamiconID+">" +gTeamInfo[game.away].teamname;
             tr.appendChild(tdh);
             tr.appendChild(tds);
             tr.appendChild(tda);
@@ -78,6 +81,7 @@ function displayGameData(data) {
 function displayStandingData() {
     let tbody = document.querySelector("#teamStandings tbody");
     tbody.innerHTML = "";
+    let rank=0;
     gTeamInfo.forEach(function (value, key) {
         let wins = value.wins;
         let losses = value.losses;
@@ -86,8 +90,10 @@ function displayStandingData() {
         let name = value.teamname;
         //Sample Tables stuff here:
         let tr = document.createElement("tr");
+        let tdr = document.createElement("td");
+        tdr.textContent = ++rank;
         let tdn = document.createElement("td");
-        tdn.textContent = name;
+        tdn.innerHTML ="<img src=img/"+value.teamiconID+">" +value.teamname;//name;
         let tdw = document.createElement("td");
         tdw.textContent = wins;
         let tdl = document.createElement("td");
@@ -96,6 +102,7 @@ function displayStandingData() {
         tdt.textContent = ties;
         let tdp = document.createElement("td");
         tdp.textContent = points;
+        tr.appendChild(tdr);
         tr.appendChild(tdn);
         tr.appendChild(tdw);
         tr.appendChild(tdl);

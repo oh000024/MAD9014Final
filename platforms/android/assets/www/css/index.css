@@ -166,7 +166,7 @@ hr{
 .tabs a {
 	display: block;
 	line-height: 2rem;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	text-align: center;
 	text-decoration: none;
 	color: black;
@@ -293,8 +293,12 @@ tbody>tr:nth-child(2n){
   speak: none; /* Not to be trusted, but hey. */
 }
 
-
 .iconic-microphone-md{
     color: red;
     background-color: red;
+}
+
+img {
+    height:20px;
+    width: 20px;
 }
